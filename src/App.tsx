@@ -1,21 +1,24 @@
-import { useState, useEffect } from 'react';
-import { urbitVisor } from '@dcspark/uv-core';
+import { useState } from 'react';
 import AuthFlow from "./AuthFlow";
 import Game from './components/Game';
 import './App.css';
 
 function App() {
   const [ship, setRealShip] = useState('');
+	
+	const authCheck = () => {
+		if(ship === "") {
+			return <AuthFlow setRealShip={setRealShip} /> 
+		}
+		else {
+			return <Game ship={ship} />;
+		}
+	}
 
-  return(
+	return(
     <div className="App">
-			{ship === "" 
-      ? 
-     <AuthFlow setRealShip={setRealShip}/>
-      : 
-      <Game ship={ship}/>}
+			{authCheck()}
 		</div>
   )
-
 }
 export default App

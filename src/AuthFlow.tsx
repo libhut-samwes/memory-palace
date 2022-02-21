@@ -15,7 +15,7 @@ function AuthFlow(props) {
     urbitVisor.getShip().then((res) => setShip("~" + res.response));
   }
   return <>{ship.length 
-    ? <Claim ship={ship} setResult={setRealShip}/> 
+    ? <Claim ship={ship} setResult={setRealShip} /> 
     : <None />}</>;
 }
 
@@ -23,8 +23,8 @@ export default AuthFlow;
 
 function None() {
   return (
-    <>
-      <p>Confirming you have a ship and aren't poor</p>
+    <div className="authPage">
+      <p>Confirming you have a ship and aren't poor...</p>
       <p>
         Need an <a href="https://urbit.live/">Urbit ID</a>?
       </p>
@@ -37,7 +37,7 @@ function None() {
         </a>
         )
       </p>
-    </>
+    </div>
   );
 }
 function Claim({ ship, setResult }) {
@@ -66,20 +66,20 @@ function Claim({ ship, setResult }) {
       body: ship,
     };
     const res = await fetch(url + "/~checkAuth", opts);
-    const jon = await res.json();
-    if (jon.status === "true")
+    const json = await res.json();
+    if (json.status === "true")
     setResult(ship)
     else setFailed(true)
     setLoading(false);
   }
   return (
-    <div>
+    <div className="authPage">
       {loading &&  <p>Checking... </p>}
-      {failed && <p>You are a damned impostor</p> }
+      {failed && <p>You are a damned impostor!</p> }
       {!loading && !failed  && 
        <>
-       <p>So you say you are {ship}. Prove it</p>
-       <button onClick={initiateAuth}>Sure</button>
+       <p>So you say you are {ship}. Care to prove it?</p>
+       <button className="btn" onClick={initiateAuth}>Sure</button>
      </>
       }
     </div>
