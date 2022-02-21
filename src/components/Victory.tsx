@@ -12,11 +12,11 @@ function Victory(props: any) {
 		message = <p>It took you {guesses} guesses....  I think Washoe would need {guesses - 1}.  Call him at +1-509-963-1518.</p>
 		}
 	return(
-		<>
-			<p>Victory!</p>
+		<div className="victory">
+			<strong>Victory!</strong>
 			{message}
-			<a className="reset-btn" onClick={gameReset}>Another Go?</a>
-		</>
+			<a className="btn" onClick={gameReset}>Another Go?</a>
+		</div>
 	);
 }
 

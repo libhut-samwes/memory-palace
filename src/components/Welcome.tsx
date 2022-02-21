@@ -19,8 +19,8 @@ const handleDifficultySelect = (e: any) => tileCountToggle((difficulties.indexOf
 
 	return (
 		<div className="welcome">
-			<h3>You up for it?</h3>
 			<div id="options">
+				<label>Tile Library:</label>
 				<Dropdown 
 					className="dropdown"
 					options={libraries} 
@@ -36,8 +36,15 @@ const handleDifficultySelect = (e: any) => tileCountToggle((difficulties.indexOf
 					placeholder="Choose difficulty"
 				/>
 				<a
-					className="start-btn"
+					className="btn"
 					onClick={handleClick}
+					style={{
+						padding: "10px 15px",
+						marginLeft: "10px",
+						marginRight: "10px",
+						fontSize: "15px",
+						fontWeight: "bold"
+					}}
 				>
 					Shall we?
 				</a>

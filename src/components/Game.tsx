@@ -9,7 +9,7 @@ import { co } from "../ob/co";
 class Tile {
 	id: string = '';
 	tileValue: string = "";
-	defaultValue: string = '#000000';
+	defaultValue: string = '#7D6B91';
 	matched: boolean = false;
 	clicked: boolean = false;
 }
@@ -44,7 +44,7 @@ const tileChooser = (num: number, library: string) => {
 		const tile = new Tile();
 		tile.id = i;
 		tile.tileValue = shuffledArr[i];
-		tile.defaultValue = '#000000';
+		tile.defaultValue = '#252323';
 		tile.matched = false;
 		tile.clicked = false;
 		tileArray.push(tile);

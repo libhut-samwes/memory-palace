@@ -1,15 +1,21 @@
 body {
 	background-color: #3EB489;
+	color: #252323;
 }
 
 .App {
 	caret-color: transparent;
 }
 
+.welcome {
+	display: flex;
+	flex-direction: column;
+	margin-top: 25px;
+}
+
 .authPage {
 	font-size: 25px;
-	background-color: red;
-	border: 2px solid black;	
+	border: 2px solid #252323;	
 	background-color: #F4F4F9;
 	border-top-left-radius: 37px 140px;
 	border-top-right-radius: 23px 130px;
@@ -22,9 +28,74 @@ body {
 	margin-top: 100px;
 }
 
+.gameBoard {
+	margin-top: 20px;
+}
+
+.footer {
+	background-color: #252323;
+	opacity: 0.85;
+	padding-left: 20px;
+	color: #F4F4F9;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+.tipjar {
+	font-size: 12px;
+}
+
+.tipjar a {
+	color: #F4F4F9;
+}
+
+.tipjar a:hover {
+	font-weight: bold;
+}
+
+.tipjar a:visited {
+	color: #F4F4F9;
+}
+
+.victory {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 25px;
+	border: 2px solid #252323;	
+	background-color: #F4F4F9;
+	border-top-left-radius: 37px 140px;
+	border-top-right-radius: 23px 130px;
+	border-bottom-left-radius: 110px 19px;
+	border-bottom-right-radius: 120px 24px;
+	width: 75%;
+	text-align: center;
+  margin: auto;
+	padding: 5%;
+	margin-top: 100px;
+	align-items: center;
+}
+
+.victory strong {
+	font-weight: bold;
+}
+
+.victory .btn {
+	margin-top: 30px;
+	text-align: center;
+	width: 150px;
+}
+
+#guesses {
+	text-align: center;
+	font-weight: bold;
+}
+
 .btn {
 	background-color: #252323;
-	color: white;
+	color: #F4F4F9;
 	border-radius: 5px;
 	border: none;
 	padding: 10px 25px;

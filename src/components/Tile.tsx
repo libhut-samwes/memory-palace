@@ -15,7 +15,7 @@ function Tile(props: any) {
 				patp: patp,
 				renderer: reactRenderer,
 				size: 100,
-				colors: ['black', 'white']
+				colors: ['#252323', '#F4F4F9']
 			})
 		);
 	}
@@ -25,7 +25,7 @@ return (
 			<div
 				className='tile'
 				style={{
-					backgroundColor: displayColor
+					backgroundColor: displayColor,
 				}}
 				onClick={clickHandler}
 			>
