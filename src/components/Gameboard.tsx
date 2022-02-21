@@ -5,6 +5,18 @@ import './Gameboard.css'
 function Gameboard(props: any) {
 	const [matchCheck, setMatchCheck] = useState<string[]>([])
 	const { library, tiles, incrementTurn, tileClickedToggle, tileMatchedToggle } = props;
+	
+	// victory logic
+	let done: any = new Array();
+	for(let tile of tiles) {
+		if(tile.matched) {
+			done.push(tile);
+		}
+	}
+	if(tiles.length !== 0 && done.length === tiles.length) {
+	}
+
+	
 	function matchHandler(i: number) {
 		setTimeout(() => {
 			const matchArr: any[] = matchCheck;

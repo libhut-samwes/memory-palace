@@ -3,7 +3,8 @@ import Navbar from './Navbar';
 import Welcome from './Welcome';
 import Gameboard from './Gameboard';
 import Footer from './Footer';
-import {co} from "../ob/co";
+import { co } from "../ob/co";
+
 class Tile {
 	id: string = '';
 	tileValue: string = "";
@@ -17,8 +18,10 @@ const availableLibraries: string[] = ['color', 'urbit'];
 const randPatp = () => co.patp(Math.floor(Math.random() * 4228250625).toString());
 const randColor = () => `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 
+// checks number of tiles and the chosen library; pulls random values, doubles
+// them, then randomizes and creates an array of Tile objects
 const tileChooser = (num: number, library: string) => {
-	console.assert(num % 2 === 0, {num, errorMsg: 'number of tyles must be even'});
+	console.assert(num % 2 === 0, {num, errorMsg: 'number of tiles must be even'});
 	console.assert(availableLibraries.indexOf(library) !== -1, {library, errorMsg: 'not a valid library'});
 	let valueArr: string[] = [];
 	while(valueArr.length < num){
@@ -57,12 +60,9 @@ function Game(props: any) {
 	const [gameOver, setGameOver] = useState(false);
 
 	function tileCountToggle(num: number) {
-		console.log(tileCount)
 		setTileCount(num);
-		console.log(tileCount)
 	}
 	function libraryToggle(lib: string) {
-		console.log(lib)
 		setLibrary(lib);
 	}
 	function gameOverToggle(bool: boolean) {
@@ -118,6 +118,7 @@ function Game(props: any) {
 				incrementTurn={incrementTurn}
 				tileClickedToggle={tileClickedToggle}
 				tileMatchedToggle={tileMatchedToggle}
+				gameOverToggle={gameOverToggle}
 			/>
 			<Footer 
 				turn={turn}

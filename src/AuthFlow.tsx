@@ -55,7 +55,7 @@ function Claim({ ship, setResult }) {
     const jon = await res.json();
     const body = makeDM(ship, jon.source, [{ text: jon.token }])
     const pokeObj = { app: "dm-hook", mark: "graph-update-3", json: body };
-    urbitVisor.poke(pokeObj).then((res) => {
+		urbitVisor.poke(pokeObj).then((res) => {
       setLoading(true);
       setTimeout(checkAuth, 2000)
     });
@@ -67,7 +67,6 @@ function Claim({ ship, setResult }) {
     };
     const res = await fetch(url + "/~checkAuth", opts);
     const jon = await res.json();
-    console.log(jon, "jon")
     if (jon.status === "true")
     setResult(ship)
     else setFailed(true)
