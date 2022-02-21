@@ -17,7 +17,7 @@ function Navbar(props: any) {
 	}
 	return (
 		<div className="nav-bar">
-			<p id="game-title">~sonwet's ~madlyn: the memory palace</p>
+			<p id="game-title">Memory Palace</p>
 			{gameStartedHandler()}
 		</div>
 	);

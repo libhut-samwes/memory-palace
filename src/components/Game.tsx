@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from './Navbar';
 import Welcome from './Welcome';
 import Gameboard from './Gameboard';
+import Victory from './Victory';
 import Footer from './Footer';
 import { co } from "../ob/co";
 
@@ -65,14 +66,15 @@ function Game(props: any) {
 	function libraryToggle(lib: string) {
 		setLibrary(lib);
 	}
-	function gameOverToggle(bool: boolean) {
-		setGameOver(bool);
-	}
 	function gameStartedToggle(num: number) {
 		setGameStarted(true);
 		const drawTiles = tileChooser(tileCount / 2, library);
 		setTiles(drawTiles);
 		
+	}
+	function gameOverToggle() {
+		setGameOver(true);
+		setTiles([]);
 	}
 	function incrementTurn() {
 		setTurn(turn + 1);
@@ -87,6 +89,11 @@ function Game(props: any) {
 		arr[i].matched = true;
 		setTiles(arr);
 	}
+	function gameReset() {
+		setGameStarted(false);
+		setGameOver(false);
+		setTiles([]);
+	}
 	function welcomeHandler() {
 		if(!gameStarted && !gameOver) {
 			return (
@@ -100,9 +107,30 @@ function Game(props: any) {
 			)
 		}
 	}
-	function gameReset() {
-		setGameStarted(false);
-		setTiles([]);
+	function gameStartHandler() {
+		if(gameStarted && !gameOver) {
+			return (
+				<Gameboard
+					library={library}
+					tiles={tiles}
+					incrementTurn={incrementTurn}
+					tileClickedToggle={tileClickedToggle}
+					tileMatchedToggle={tileMatchedToggle}
+					gameOverToggle={gameOverToggle}
+				/>
+			)
+		}
+	}
+	function gameOverHandler() {
+		if(gameOver) {
+			return (
+				<Victory 
+					gameReset={gameReset}
+					turn={turn}
+					tileCount={tileCount}
+				/>
+			)
+		}
 	}
 	return (
 		<>
@@ -112,15 +140,11 @@ function Game(props: any) {
 				gameOver={gameOver}
 			/>
 			{welcomeHandler()}
-			<Gameboard
-				library={library}
-				tiles={tiles}
-				incrementTurn={incrementTurn}
-				tileClickedToggle={tileClickedToggle}
-				tileMatchedToggle={tileMatchedToggle}
-				gameOverToggle={gameOverToggle}
-			/>
+			{gameStartHandler()}
+			{gameOverHandler()}
 			<Footer 
+				gameStarted={gameStarted}
+				gameOver={gameOver}
 				turn={turn}
 			/>
 		</>

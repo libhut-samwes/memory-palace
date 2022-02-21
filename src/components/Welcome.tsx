@@ -15,7 +15,7 @@ const handleLibrarySelect = (e: any) => libraryToggle(e.value);
 
 const difficulties = ['Easy: ~mydwyt-kommet', 'Normal: ~sampel-palnet', 'Hard: ~virryl-strlrd', '~zod mode'];
 const defaultDifficulty = difficulties[1];
-const handleDifficultySelect = (e: any) => tileCountToggle((difficulties.indexOf(e.value) + 1) * 16); // dropdown is buggy and don't care to figure it out'
+const handleDifficultySelect = (e: any) => tileCountToggle((difficulties.indexOf(e.value) + 1) * 16);
 
 	return (
 		<div className="welcome">

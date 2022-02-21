@@ -1,5 +1,5 @@
 function Footer(props: any) {
-	const { turn } = props;
+	const { gameStarted, turn, gameOver } = props;
 	const tipJar = <div>
 									<p>Tip Jar:</p>
 									<p>ETH/WSTR: <a href="https://etherscan.io/address/0xc196adc73cbf4ac19f8a7aa4058b1e7c281add2f">0xC196aDc73cbf4ac19F8A7AA4058B1E7C281add2F</a></p>
@@ -7,7 +7,7 @@ function Footer(props: any) {
 									<p>Lightning: <a href="bitcoin:bc1qee3ke0xkqzn24pkrdyrwvs7zykpnvuvjwrprvm">bc1qee3ke0xkqzn24pkrdyrwvs7zykpnvuvjwrprvm</a></p>
 									<p>Powered by Urbit.Media and dcSpark's Urbit Visor</p>
 								 </div>
-	if(turn > 0) {
+	if(gameStarted && turn > 0 && !gameOver) {
 		return (
 			<>
 				<p>Guesses: {Math.floor(turn / 2)}</p>

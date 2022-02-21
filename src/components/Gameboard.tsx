@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Tile from './Tile';
 import './Gameboard.css'
 
 function Gameboard(props: any) {
 	const [matchCheck, setMatchCheck] = useState<string[]>([])
-	const { library, tiles, incrementTurn, tileClickedToggle, tileMatchedToggle } = props;
+	const { library, tiles, incrementTurn, gameOverToggle, tileClickedToggle, tileMatchedToggle } = props;
 	
 	// victory logic
 	let done: any = new Array();
@@ -14,9 +14,10 @@ function Gameboard(props: any) {
 		}
 	}
 	if(tiles.length !== 0 && done.length === tiles.length) {
+		gameOverToggle();
 	}
-
 	
+	// identify matches
 	function matchHandler(i: number) {
 		setTimeout(() => {
 			const matchArr: any[] = matchCheck;
@@ -33,6 +34,9 @@ function Gameboard(props: any) {
 			}
 		}, 500);
 	}
+
+	// render the gameboard with either hidden tiles or, if matched, blank
+	// unclickable tiles
 	const gameBoard:any[] = [];
 	for(let i in tiles) {
 		if(!tiles[i].matched) {
@@ -60,6 +64,7 @@ function Gameboard(props: any) {
 			)
 		}
 	}
+
 	return (
 		<div className="gameBoard">
 			{gameBoard}
